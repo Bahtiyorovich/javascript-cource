@@ -95,11 +95,5 @@
     const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
     const citrus = fruits.slice(1);   
 
-    Ikki massivni birlashtirish "Spred operatori"
-
-    const pupils = ['ali', 'vali'];
-    const pupils2 = ['solih', 'holiq'];
-
-    const children = [...pupils, ...pupils2];
-    console.log(children);
+    Ikki massivni birlashtirish
 */

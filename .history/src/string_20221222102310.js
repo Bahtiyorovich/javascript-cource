@@ -1,5 +1,8 @@
 "use strict"  // bu qator qatiy rejimni taminlab beradi: eski kodlardan foydalanmaslikni nazorat qiladi
 
+
+
+
  /*String Methods:
 
     length -- satr uzunligini qaytaradi

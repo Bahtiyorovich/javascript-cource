@@ -98,8 +98,5 @@
     Ikki massivni birlashtirish "Spred operatori"
 
     const pupils = ['ali', 'vali'];
-    const pupils2 = ['solih', 'holiq'];
-
-    const children = [...pupils, ...pupils2];
-    console.log(children);
+    const pupils2 = ['solih', 'holiq']
 */

@@ -1,5 +1,8 @@
 "use strict"  // bu qator qatiy rejimni taminlab beradi: eski kodlardan foydalanmaslikni nazorat qiladi
 
+
+
+
  /*String Methods:
 
     length -- satr uzunligini qaytaradi
@@ -15,7 +18,6 @@
     /text/i -- katta kichik harflarni bir xil moslikka tenglaydi
     /text/g -- barcha moslikni kerakli text ga almashtiradi
 */
-
 // let matn = "bugun biz js da string metodlarini o'rganamiz";
 // console.log(matn.length);
 

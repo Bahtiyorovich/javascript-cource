@@ -1,6 +1,9 @@
 "use strict"  // bu qator qatiy rejimni taminlab beradi: eski kodlardan foydalanmaslikni nazorat qiladi
 
- /*String Methods:
+
+
+
+ String Methods:
 
     length -- satr uzunligini qaytaradi
     slice(satr, end) - satrning bir qismini ajratib olish
@@ -14,7 +17,6 @@
     
     /text/i -- katta kichik harflarni bir xil moslikka tenglaydi
     /text/g -- barcha moslikni kerakli text ga almashtiradi
-*/
 
 // let matn = "bugun biz js da string metodlarini o'rganamiz";
 // console.log(matn.length);
@@ -55,14 +57,14 @@
 // let str13 = str12.match(/js/gi); // Bu qatordagi ( /..../gi ) kodi bir vaqtda katta kichik moslik nechta bo'lsa hammasini qaytaradi
 // console.log(str13);
 
-// let str14 = 'Web dasturchi: js, reactjs, vuejs, angularjs ni o\'rganishi kerak';
-// let str15 = str14.includes('web');
-// console.log(str15);
+let str14 = 'Web dasturchi: js, reactjs, vuejs, angularjs ni o\'rganishi kerak';
+let str15 = str14.includes('web');
+console.log(str15);
 
 
-// let str16 = 'Web dasturchi: js, reactjs, vuejs, angularjs ni o\'rganishi kerak';
-// let str17 = str16.includes('Web'); 
-// console.log(str17);
+let str16 = 'Web dasturchi: js, reactjs, vuejs, angularjs ni o\'rganishi kerak';
+let str17 = str16.includes(/web'); 
+console.log(str17);
 
 
 /*------Callback function-------- */

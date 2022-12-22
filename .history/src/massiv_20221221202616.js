@@ -101,5 +101,5 @@
     const pupils2 = ['solih', 'holiq'];
 
     const children = [...pupils, ...pupils2];
-    console.log(children);
+    console.log(children)
 */
