@@ -36,23 +36,33 @@ btns[0].addEventListener('click', () => {
 const wrapper = document.querySelector('.btn-block'),
       buttons = document.querySelectorAll('button')
 
-
+//Bu qatordagi kod (0) - indeksdagi buttonni bosganda (1) - indeksdagi buttonga "red" clasini beradi 
 buttons[0].addEventListener('click', () => {
     buttons[1].classList.toggle('red')
 })
 
+// Bu qatordagi kodda agar barcha buttonlar ichida qaysi birida "red" klasi bo'lsa consolga malumot chiqadi
 wrapper.addEventListener('click', (event) => {
-    if(event.target && event.target.classList.contains('red')){
+    // 1-usul
+    // if(event.target && event.target.classList.contains('red')){
+    //     console.log('Button Clicked');
+    // }
+
+    // 2-usul yani "matches - metodi" red klasi mavjud button bosilganda consolga malumot chiqadi
+    if(event.target && event.target.matches('button.red')){
         console.log('Button Clicked');
     }
 })
 
-// buttons.forEach((item) => {
-//     item.addEventListener('click' , () => {
-//         console.log('Clicked')
-//     })
-// })
+// bu qatordagi kodda har bir button bosilganda consolga malumot chiqadi
+buttons.forEach((item) => {
+    item.addEventListener('click' , () => {
+        console.log('Clicked')
+    })
+})
 
+
+// bu qatordagi kodda wrapperga automatik ravishda yangi "red" klasli button qo'shilyapti 
 const btn = document.createElement('button');
 btn.classList.add('red')
 wrapper.append(btn);
