@@ -233,6 +233,32 @@ a {
   font-size: 22px;
   font-weight: 700;
 }
+
+/*==========show and hide===============*/
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+/*=====================*/
+
 .offer {
   height: 80vh;
   background: #594657;

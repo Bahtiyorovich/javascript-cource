@@ -5,7 +5,7 @@
 
     toString() -- massiv elementlarini satrga aylantiradi.
     
-    const names = ["Shodiyo", "Abdulhay", "Ahror", "Usmonjon", "Muhammadali", "Qobiljon"];
+    const names = ["Shodiyor", "Abdulhay", "Ahror", "Usmonjon", "Muhammadali", "Qobiljon"];
     console.log(names.toString()); // Natija; Shodiyor, Abdulhay,Ahror,Usmonjon,Muhammadali,Qobiljon
     
     join() - barcha massiv elementlarini satrga birlashtiradi.
@@ -102,4 +102,54 @@
 
     const children = [...pupils, ...pupils2];
     console.log(children);
+
+    sort() - bu massiv ma'lumotlarini alifbo tartibida tartiblaydi
+    reverse() - teskarisiga o'girish
 */
+
+
+
+//console.log(typeof(numbers.toString()));
+
+//console.log(typeof(numbers[0]));
+
+// const names = ["Shodiyo", "Abdulhay", "Ahror", "Usmonjon", "Muhammadali", "Qobiljon"];
+ //console.log(numbers.join(" "));
+
+
+// const numbers = [11, 12, 15, 25, 17, 98, 100];
+//     numbers.push(101);
+//     console.log(numbers);
+
+// console.log(numbers);
+// let number = numbers.pop();
+// console.log(numbers);
+// console.log(number);
+
+
+// const names = ["Shodiyor", "Abdulhay", "Ahror", "Usmonjon", "Muhammadali", "Qobiljon"];
+// console.log(names);
+// console.log(names.sort());
+
+
+// const numbers = [45, 87, 96, 74,1, 2,3, 11, 102, 205, 305, 17, 98, 100];
+// console.log(numbers.sort());
+
+// sort metodini raqamlarda o'sish tartibida ishlatish
+// const numbers7 = numbers.sort((a, b) => ( a - b) )
+// console.log(numbers7);
+
+// sort metodini raqamlarda kamayish tartibida ishlatish
+
+// const numbers8 = numbers.sort((a, b) => ( b - a) )
+// console.log(numbers8);
+
+
+
+
+
+
+
+
+
+
