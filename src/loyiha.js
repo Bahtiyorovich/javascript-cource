@@ -4,7 +4,7 @@ window.addEventListener('DOMContentLoaded', () => { // bu qatordagi kod vazifasi
         tabs = document.querySelectorAll('.tabheader__item'),
         tabsContent = document.querySelectorAll('.tabcontent'),
         loader = document.querySelector('.loader')
-        
+
 
 
     // Loader: 
@@ -45,13 +45,13 @@ window.addEventListener('DOMContentLoaded', () => { // bu qatordagi kod vazifasi
 
     tabsParent.addEventListener('click', (event) => {
         const target = event.target;
-        if(target && target.classList.contains('tabheader__item')){
+        if (target && target.classList.contains('tabheader__item')) {
             tabs.forEach((item, index) => {
-                if( target == item){
+                if (target == item) {
                     hideTabContent()
                     showTabContent(index)
                 }
-            } )
+            })
         }
     })
 
@@ -64,26 +64,26 @@ window.addEventListener('DOMContentLoaded', () => { // bu qatordagi kod vazifasi
         let days, hours, minutes, seconds;
         const timer = Date.parse(endTime) - Date.parse(new Date());
 
-        if(timer <= 0){
+        if (timer <= 0) {
             days = 0,
-            hours = 0,
-            minutes = 0,
-            seconds = 0
-        } else if( days > 999) {
+                hours = 0,
+                minutes = 0,
+                seconds = 0
+        } else if (days > 999) {
             days.classList.add('span');
-        } 
+        }
         else {
             days = Math.floor(timer / (1000 * 60 * 60 * 24)),
-            hours = Math.floor((timer / (1000 * 60 * 60 )) % 24 ),
-            minutes = Math.floor((timer / (1000 / 60)) % 60),
-            seconds = Math.floor((timer / 1000) % 60);
+                hours = Math.floor((timer / (1000 * 60 * 60)) % 24),
+                minutes = Math.floor((timer / (1000 / 60)) % 60),
+                seconds = Math.floor((timer / 1000) % 60);
         }
 
         return { days, timer, hours, minutes, seconds };
     }
 
     const getZero = number => {
-        if(number >= 0 && number < 10){
+        if (number >= 0 && number < 10) {
             return `0${number}`;
         } else {
             return number;
@@ -96,19 +96,19 @@ window.addEventListener('DOMContentLoaded', () => { // bu qatordagi kod vazifasi
             hours = timer.querySelector('#hours'),
             minutes = timer.querySelector('#minutes'),
             seconds = timer.querySelector('#seconds')
-            timeInterval = setInterval(updateClock, 1000);
+        timeInterval = setInterval(updateClock, 1000);
 
         updateClock();
 
         function updateClock() {
-            const time = getTimeRemaining(endTime); 
+            const time = getTimeRemaining(endTime);
 
             days.innerHTML = getZero(time.days);
             hours.innerHTML = getZero(time.hours);
             minutes.innerHTML = getZero(time.minutes);
             seconds.innerHTML = getZero(time.seconds);
 
-            if(time.timer <= 0){
+            if (time.timer <= 0) {
                 clearInterval(timeInterval);
             }
         }
@@ -116,35 +116,131 @@ window.addEventListener('DOMContentLoaded', () => { // bu qatordagi kod vazifasi
 
     setClock('.timer', deadLine);
 
-    
+
     // Modal: 
 
-    const modalTrigger = document.querySelector('[data-modal]'),
+    const modalTrigger = document.querySelectorAll('[data-modal]'),
         modal = document.querySelector('.modal'),
-        modalCloseBtn = document.querySelector('[data-close]')
+        modalCloseBtn = document.querySelector('[data-close]');
 
-    modalTrigger.addEventListener('click', () => {
-        modal.style.display='block';
-        document.body.style.overflow='hidden'
-    })
-        
-    const modalClose = () => {
-        modal.style.display = 'none'
-        document.body.style.overflow = ''
+
+    const modalOpen = () => {
+        // modal.classList.toggle('show');
+        modal.classList.add('show');
+        modal.classList.remove('hide');
+        //modal.style.display='block';
+        document.body.style.overflow = 'hidden';
+        clearInterval(modalTimerId)
     }
 
+    const modalClose = () => {
+        //modal.classList.toggle('hide');
+        modal.classList.add('hide');
+        modal.classList.remove('show');
+        //modal.style.display = 'none'
+        document.body.style.overflow = '';
+    }
+
+    modalTrigger.forEach(item => {
+        item.addEventListener('click', modalOpen)
+    })
+
     modalCloseBtn.addEventListener('click', modalClose)
-    
+
     modal.addEventListener('click', (event) => {
-        if(event.target == modal){
-           modalClose();
+        if (event.target == modal) {
+            modalClose();
         }
     })
 
     // Bu qatordagi kod agar "Esc" klavishi bosilsa modal oynasi yopiladi
     document.addEventListener('keydown', (event) => {
-        if(event.code === 'Escape' && modal.classList.contains('show')){
+        if (event.code === 'Escape' && modal.classList.contains('show')) {
             modalClose();
         }
     })
+
+    // belgilangan vaqt ichida modal ochish
+    const modalTimerId = setTimeout(modalOpen, 3000)
+
+    // user sahifaning oxiriga kelganda modalni automatik ochish
+    const showModalByScroll = () => {
+        if (window.pageYOffset + document.documentElement.clientHeight >=
+            document.documentElement.scrollHeight - 1) {
+            modalOpen();
+            window.removeEventListener('scroll', showModalByScroll)
+        }
+    }
+
+    window.addEventListener('scroll', showModalByScroll);
+
+
+    // Class yordamida Cardlarni dinamik ko'rsatish
+
+    class MenuCard {
+        constructor(src, alt, title, description, price, parentSelector) {
+            this.src = src,
+            this.alt = alt,
+            this.title = title,
+            this.desc = description,
+            this.parent = document.querySelector(parentSelector)
+            this.price = price,
+            this.transfer = 11000,
+            this.changeToUzs()
+        }
+
+        changeToUzs() {
+            this.price = this.price * this.transfer
+        }
+
+        render() {
+
+            const element = document.createElement('div')
+
+            element.innerHTML = `
+
+                <div class="menu__item">
+                    <img src=${this.src} alt=${this.alt} />
+                    <h3 class="menu__item-subtitle">${this.title}</h3>
+                    <div class="menu__item-descr">${this.desc}</div>
+                    <div class="menu__item-divider"></div>
+                    <div class="menu__item-price">
+                        <div class="menu__item-cost">Price:</div>
+                        <div class="menu__item-total"><span>${this.price}</span> uzs/month</div>
+                    </div>
+                </div>
+            `
+
+            this.parent.append(element)
+        }
+    }
+
+    new MenuCard(
+        "../images/tabs/1.png",
+        "vegy",
+        'Plan "Usual"',
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit nesciunt facere, sequi exercitationem praesentium ab cupiditate beatae debitis perspiciatis itaque quaerat id modi corporis delectus ratione nobis harum voluptatum in.',
+        10,
+        '.menu .container'
+    ).render()
+
+    new MenuCard(
+        "../images/tabs/2.jpg",
+        "vegy",
+        'Plan "Usual"',
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit nesciunt facere, sequi exercitationem praesentium ab cupiditate beatae debitis perspiciatis itaque quaerat id modi corporis delectus ratione nobis harum voluptatum in.',
+        15,
+        '.menu .container'
+    ).render()
+
+    new MenuCard(
+        "../images/tabs/3.jpg",
+        "vegy",
+        'Plan "Usual"',
+        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit nesciunt facere, sequi exercitationem praesentium ab cupiditate beatae debitis perspiciatis itaque quaerat id modi corporis delectus ratione nobis harum voluptatum in.',
+        18,
+        '.menu .container'
+    ).render()
+
+
 })
