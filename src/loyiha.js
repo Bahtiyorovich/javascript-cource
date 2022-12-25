@@ -2,9 +2,21 @@ window.addEventListener('DOMContentLoaded', () => { // bu qatordagi kod vazifasi
 
     const tabsParent = document.querySelector('.tabheader__items'),
         tabs = document.querySelectorAll('.tabheader__item'),
-        tabsContent = document.querySelectorAll('.tabcontent')
+        tabsContent = document.querySelectorAll('.tabcontent'),
+        loader = document.querySelector('.loader')
+        
 
-    /* elementlarni yashirib turish uchun funksiya */
+
+    // Loader: 
+
+    setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    }, 2000);
+
+    /* Tabs: elementlarni yashirib turish uchun funksiya */
 
     const hideTabContent = () => {
         tabsContent.forEach(item => {
@@ -36,22 +48,103 @@ window.addEventListener('DOMContentLoaded', () => { // bu qatordagi kod vazifasi
         if(target && target.classList.contains('tabheader__item')){
             tabs.forEach((item, index) => {
                 if( target == item){
-                    hideTabContent();
-                    showTabContent(index);
+                    hideTabContent()
+                    showTabContent(index)
                 }
             } )
         }
     })
 
+    // Date:
 
+    const deadLine = '2023-12-31'
 
+    const getTimeRemaining = endTime => {
 
+        let days, hours, minutes, seconds;
+        const timer = Date.parse(endTime) - Date.parse(new Date());
 
+        if(timer <= 0){
+            days = 0,
+            hours = 0,
+            minutes = 0,
+            seconds = 0
+        } else if( days > 999) {
+            days.classList.add('span');
+        } 
+        else {
+            days = Math.floor(timer / (1000 * 60 * 60 * 24)),
+            hours = Math.floor((timer / (1000 * 60 * 60 )) % 24 ),
+            minutes = Math.floor((timer / (1000 / 60)) % 60),
+            seconds = Math.floor((timer / 1000) % 60);
+        }
 
+        return { days, timer, hours, minutes, seconds };
+    }
 
+    const getZero = number => {
+        if(number >= 0 && number < 10){
+            return `0${number}`;
+        } else {
+            return number;
+        }
+    }
 
+    const setClock = (selector, endTime) => {
+        const timer = document.querySelector(selector),
+            days = timer.querySelector('#days'),
+            hours = timer.querySelector('#hours'),
+            minutes = timer.querySelector('#minutes'),
+            seconds = timer.querySelector('#seconds')
+            timeInterval = setInterval(updateClock, 1000);
 
+        updateClock();
 
+        function updateClock() {
+            const time = getTimeRemaining(endTime); 
 
+            days.innerHTML = getZero(time.days);
+            hours.innerHTML = getZero(time.hours);
+            minutes.innerHTML = getZero(time.minutes);
+            seconds.innerHTML = getZero(time.seconds);
 
+            if(time.timer <= 0){
+                clearInterval(timeInterval);
+            }
+        }
+    }
+
+    setClock('.timer', deadLine);
+
+    
+    // Modal: 
+
+    const modalTrigger = document.querySelector('[data-modal]'),
+        modal = document.querySelector('.modal'),
+        modalCloseBtn = document.querySelector('[data-close]')
+
+    modalTrigger.addEventListener('click', () => {
+        modal.style.display='block';
+        document.body.style.overflow='hidden'
+    })
+        
+    const modalClose = () => {
+        modal.style.display = 'none'
+        document.body.style.overflow = ''
+    }
+
+    modalCloseBtn.addEventListener('click', modalClose)
+    
+    modal.addEventListener('click', (event) => {
+        if(event.target == modal){
+           modalClose();
+        }
+    })
+
+    // Bu qatordagi kod agar "Esc" klavishi bosilsa modal oynasi yopiladi
+    document.addEventListener('keydown', (event) => {
+        if(event.code === 'Escape' && modal.classList.contains('show')){
+            modalClose();
+        }
+    })
 })
