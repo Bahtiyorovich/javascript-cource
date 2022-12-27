@@ -198,7 +198,12 @@ window.addEventListener('DOMContentLoaded', () => { // bu qatordagi kod vazifasi
 
             const element = document.createElement('div')
 
-            this.classes.forEach(classname => element.classList.add(classname))
+            if(this.classes.length === 0){
+                this.element = 'menu__item'
+                element.classList.add(this.element)
+            }else{
+                this.classes.forEach(classname => element.classList.add(classname))
+            }
 
             element.innerHTML = `
                     <img src=${this.src} alt=${this.alt} />
