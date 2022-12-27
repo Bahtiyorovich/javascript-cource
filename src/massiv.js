@@ -4,10 +4,10 @@
     array - massiv "const" kalit so'zi bilan e'lon qilinadi
 
     toString() -- massiv elementlarini satrga aylantiradi.
-    
+
     const names = ["Shodiyor", "Abdulhay", "Ahror", "Usmonjon", "Muhammadali", "Qobiljon"];
     console.log(names.toString()); // Natija; Shodiyor, Abdulhay,Ahror,Usmonjon,Muhammadali,Qobiljon
-    
+
     join() - barcha massiv elementlarini satrga birlashtiradi.
 
     const names = ["Shodiyo", "Abdulhay", "Ahror", "Usmonjon", "Muhammadali", "Qobiljon"];
@@ -31,8 +31,8 @@
     console.log(fruit); // farqini toping;
 
     const names = ["Shodiyo", "Abdulhay", "Ahror", "Usmonjon", "Muhammadali", "Qobiljon"];
-    let fruit = names.shift(); 
-    console.log(fruit)    
+    let fruit = names.shift();
+    console.log(fruit)
 
     unshift() - massivga yangi element qo'shadi (boshida) va eski elementlarni "o'chiradi":
 
@@ -61,7 +61,7 @@
     const names = ["Shodiyo", "Abdulhay", "Ahror", "Usmonjon", "Muhammadali", "Qobiljon"];
     delete names[0];
 
-    "delete" foydalansangiz o'chirilgan element o'rni yo'q bo'lmaydi, 
+    "delete" foydalansangiz o'chirilgan element o'rni yo'q bo'lmaydi,
     const names = [....., "Abdulhay", "Ahror", "Usmonjon", "Muhammadali", "Qobiljon"];
 
     console.log(names[0]) // natija: undefined chiqadi.
@@ -70,7 +70,7 @@
 
     concat() - mavjud massivlarni birlashtirish (birlashtirish) orqali yangi massiv yaratadi:
     concat() - mavjud massivlarni o'zgartirmaydi. U har doim yangi massivni qaytaradi.
-    
+
     const myCars = ["Gentra", "Nexia3"];
     const myCars2 = ["Elantra", "Tesla", "Lexus"];
 
@@ -88,12 +88,12 @@
 
 
 
-    slice() - massivning bir qismini yangi massivga ajratadi. 
+    slice() - massivning bir qismini yangi massivga ajratadi.
     slice() - yangi massivni yaratadi.
     slice() - manba massividan hech qanday elementni olib tashlamaydi
-    
+
     const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
-    const citrus = fruits.slice(1);   
+    const citrus = fruits.slice(1);
 
     Ikki massivni birlashtirish "Spred operatori"
 
@@ -107,49 +107,99 @@
     reverse() - teskarisiga o'girish
 */
 
+// console.log(typeof(numbers.toString())); console.log(typeof(numbers[0]));
+// const names = ["Shodiyo", "Abdulhay", "Ahror", "Usmonjon", "Muhammadali",
+// "Qobiljon"]; console.log(numbers.join(" ")); const numbers = [11, 12, 15, 25,
+// 17, 98, 100];     numbers.push(101);     console.log(numbers);
+// console.log(numbers); let number = numbers.pop(); console.log(numbers);
+// console.log(number); const names = ["Shodiyor", "Abdulhay", "Ahror",
+// "Usmonjon", "Muhammadali", "Qobiljon"]; console.log(names);
+// console.log(names.sort()); const numbers = [45, 87, 96, 74,1, 2,3, 11, 102,
+// 205, 305, 17, 98, 100]; console.log(numbers.sort()); sort metodini raqamlarda
+// o'sish tartibida ishlatish const numbers7 = numbers.sort((a, b) => ( a - b) )
+// console.log(numbers7); sort metodini raqamlarda kamayish tartibida ishlatish
+// const numbers8 = numbers.sort((a, b) => ( b - a) ) console.log(numbers8);
 
+/*==================== Massivning eng ko'p ishlatiladigan metodlari ===================== */
 
-//console.log(typeof(numbers.toString()));
+//  1. forEach() - har bir massiv elementi uchun bir marta     funktsiyani
+// (qayta qo'ng'iroq funktsiyasi) chaqiradi.
 
-//console.log(typeof(numbers[0]));
+const numbers1 = [45, 4, 9, 16, 25];
+let txt = "";
+numbers1.forEach((value) => {
+    txt += value + " ";
+});
+console.log(txt);
 
-// const names = ["Shodiyo", "Abdulhay", "Ahror", "Usmonjon", "Muhammadali", "Qobiljon"];
- //console.log(numbers.join(" "));
+//  2.  map() - har bir massiv elementida funksiyani bajarish orqali yangi
+// massiv yaratadi.      map() - massiv elementlari uchun qiymatsiz funksiyani
+// bajarmaydi.      map() - asl qatorni o'zgartirmaydi.
 
+const numbersMap = [45, 4, 9, 16, 25];
+const numbers2 = numbersMap.map(myFunction);
 
-// const numbers = [11, 12, 15, 25, 17, 98, 100];
-//     numbers.push(101);
-//     console.log(numbers);
+function myFunction(value, index, array) {
+  return value * 2;
+}
 
-// console.log(numbers);
-// let number = numbers.pop();
-// console.log(numbers);
-// console.log(number);
+// 3. filter() - sinovdan o 'tgan massiv elementlari bilan yangi massiv yaratadi.
 
+const numbersFilter = [45, 4, 9, 16, 25];
+const over18 = numbers.filterFilter(myFunction);
 
-// const names = ["Shodiyor", "Abdulhay", "Ahror", "Usmonjon", "Muhammadali", "Qobiljon"];
-// console.log(names);
-// console.log(names.sort());
+function myFunction(value, index, array) {
+  return value > 18;
+}
 
+//4. reduce() - har bir massiv elementida bitta qiymat ishlab chiqarish(uni kamaytirish)uchun funksiyani ishga tushiradi.reduce() - massivda chapdan o 'ngga ishlaydi. Shuningdek qarang reduceRight().
 
-// const numbers = [45, 87, 96, 74,1, 2,3, 11, 102, 205, 305, 17, 98, 100];
-// console.log(numbers.sort());
+//reduce() - asl qatorni kamaytirmaydi.const numbers = [45, 4, 9, 16, 25];
+const numbersReduce = [45, 4, 9, 16, 25];
+let summa = numbersReduce.reduce(myFunction);
 
-// sort metodini raqamlarda o'sish tartibida ishlatish
-// const numbers7 = numbers.sort((a, b) => ( a - b) )
-// console.log(numbers7);
+function myFunction(total, value, index, array) {
+  return total + value;
+}
 
-// sort metodini raqamlarda kamayish tartibida ishlatish
+//reduce() - boshlang 'ich qiymatni qabul qilishi mumkin:
 
-// const numbers8 = numbers.sort((a, b) => ( b - a) )
-// console.log(numbers8);
+const numbersReduce2 = [45, 4, 9, 16, 25];
+let sum = numbersReduce2.reduce(myFunction, 100);
 
+function myFunction(total, value) {
+  return total + value;
+}
 
+//5. every() - barcha massiv qiymatlari sinovdan o 'tganligini tekshiradi. 
 
+const numbersEvery = [45, 4, 9, 16, 25];
+let allOver18 = numbersEvery.every(myFunction);
 
+function myFunction(value, index, array) {
+  return value > 18;
+}
 
+//6. some() - ba 'zi massiv qiymatlari sinovdan o' tganligini tekshiradi.const numbers = [45, 4, 9, 16, 25];
+const numbersSome = [45, 4, 9, 16, 25];
+let someOver18 = numbersSome.some(myFunction);
 
+function myFunction(value, index, array) {
+  return value > 18;
+}
 
+//7. indexOf() - massivda element qiymatini qidiradi va uning o 'rnini qaytaradi.
+// Array.indexOf() - Agar element topilmasa - 1 ni qaytaradi
+  
+ // array.indexOf(item, start) - sintaksis
 
+//8. find() - sinov funktsiyasidan o 'tgan birinchi massiv elementining qiymatini qaytaradi.
 
+const numbersFind = [4, 9, 16, 25, 29];
+let first = numbersFind.find(myFunction);
 
+function myFunction(value, index, array) {
+  return value > 18;
+}
+
+//find() - ES6 xususiyatidir(JavaScript 2015). * /

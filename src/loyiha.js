@@ -178,11 +178,12 @@ window.addEventListener('DOMContentLoaded', () => { // bu qatordagi kod vazifasi
     // Class yordamida Cardlarni dinamik ko'rsatish
 
     class MenuCard {
-        constructor(src, alt, title, description, price, parentSelector) {
+        constructor(src, alt, title, description, price, parentSelector, ...classes) {
             this.src = src,
             this.alt = alt,
             this.title = title,
             this.desc = description,
+            this.classes = classes,
             this.parent = document.querySelector(parentSelector)
             this.price = price,
             this.transfer = 11000,
@@ -197,9 +198,9 @@ window.addEventListener('DOMContentLoaded', () => { // bu qatordagi kod vazifasi
 
             const element = document.createElement('div')
 
-            element.innerHTML = `
+            this.classes.forEach(classname => element.classList.add(classname))
 
-                <div class="menu__item">
+            element.innerHTML = `
                     <img src=${this.src} alt=${this.alt} />
                     <h3 class="menu__item-subtitle">${this.title}</h3>
                     <div class="menu__item-descr">${this.desc}</div>
@@ -208,7 +209,6 @@ window.addEventListener('DOMContentLoaded', () => { // bu qatordagi kod vazifasi
                         <div class="menu__item-cost">Price:</div>
                         <div class="menu__item-total"><span>${this.price}</span> uzs/month</div>
                     </div>
-                </div>
             `
 
             this.parent.append(element)
@@ -221,25 +221,29 @@ window.addEventListener('DOMContentLoaded', () => { // bu qatordagi kod vazifasi
         'Plan "Usual"',
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit nesciunt facere, sequi exercitationem praesentium ab cupiditate beatae debitis perspiciatis itaque quaerat id modi corporis delectus ratione nobis harum voluptatum in.',
         10,
-        '.menu .container'
+        '.menu .container',
+        'menu__item'
     ).render()
 
     new MenuCard(
         "../images/tabs/2.jpg",
-        "vegy",
-        'Plan "Usual"',
+        "Premium",
+        'Plan "Premium"',
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit nesciunt facere, sequi exercitationem praesentium ab cupiditate beatae debitis perspiciatis itaque quaerat id modi corporis delectus ratione nobis harum voluptatum in.',
         15,
-        '.menu .container'
+        '.menu .container',
+        'menu__item'
+
     ).render()
 
     new MenuCard(
         "../images/tabs/3.jpg",
-        "vegy",
-        'Plan "Usual"',
+        "VIP",
+        'Plan "VIP"',
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit nesciunt facere, sequi exercitationem praesentium ab cupiditate beatae debitis perspiciatis itaque quaerat id modi corporis delectus ratione nobis harum voluptatum in.',
         18,
-        '.menu .container'
+        '.menu .container',
+        'menu__item'
     ).render()
 
 
