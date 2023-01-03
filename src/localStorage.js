@@ -2,23 +2,28 @@
 
 const name = document.querySelector('.name'),
     email = document.querySelector('.email'),
-    button = document.querySelector('.button'),
-    btnDanger = document.querySelector('.btn-danger'),
+    formSubmit = document.querySelector('form'),
     title = document.querySelector('.title')
 
 // Browser LocaStorage ga ma'lumot joylash; 
 
- localStorage.setItem('name','Sherzod');
+formSubmit.addEventListener('submit', (e) => {
+    // refresh bo'lishni oldini oladi:
+    e.preventDefault();
 
-// const myName = localStorage.getItem('name');
-// console.log(myName)
+    const user = {
+        name: firstname.value,
+        email: email.value,
+    }
+    // Inputga kiritilgan ma'lumot submit qilingandan keyin formadan o'chib ketadi;
+    e.target.reset()
 
-// title.textContent = `${myName}`;
+    localStorage.setItem('user', JSON.stringify(user))
 
-btnDanger.addEventListener('click', () => {
-    localStorage.removeItem('name')
-})
+ })
 
+const UserName = JSON.parse(localStorage.getItem('user'));
+title.textContent = `${UserName.name}`
 
 
 
