@@ -128,12 +128,12 @@
 const numbers1 = [45, 4, 9, 16, 25];
 let txt = "";
 numbers1.forEach((value) => {
-    txt += value + " ";
+    txt += value + '\n';
 });
 console.log(txt);
 
 //  2.  map() - har bir massiv elementida funksiyani bajarish orqali yangi
-// massiv yaratadi.      map() - massiv elementlari uchun qiymatsiz funksiyani
+// massiv yaratadi.  map() - massiv elementlari uchun qiymatsiz funksiyani
 // bajarmaydi.      map() - asl qatorni o'zgartirmaydi.
 
 const numbersMap = [45, 4, 9, 16, 25];
@@ -142,16 +142,18 @@ const numbers2 = numbersMap.map(myFunction);
 function myFunction(value, index, array) {
   return value * 2;
 }
+console.log(numbers2)
 
 // 3. filter() - sinovdan o 'tgan massiv elementlari bilan yangi massiv yaratadi.
 
 const numbersFilter = [45, 4, 9, 16, 25];
-const over18 = numbers.filterFilter(myFunction);
+const over18 = numbersFilter.filter(myFunction);
 
 function myFunction(value, index, array) {
   return value > 18;
 }
 
+console.log(over18)
 //4. reduce() - har bir massiv elementida bitta qiymat ishlab chiqarish(uni kamaytirish)uchun funksiyani ishga tushiradi.reduce() - massivda chapdan o 'ngga ishlaydi. Shuningdek qarang reduceRight().
 
 //reduce() - asl qatorni kamaytirmaydi.const numbers = [45, 4, 9, 16, 25];
@@ -161,7 +163,7 @@ let summa = numbersReduce.reduce(myFunction);
 function myFunction(total, value, index, array) {
   return total + value;
 }
-
+console.log(summa)
 //reduce() - boshlang 'ich qiymatni qabul qilishi mumkin:
 
 const numbersReduce2 = [45, 4, 9, 16, 25];
@@ -170,7 +172,7 @@ let sum = numbersReduce2.reduce(myFunction, 100);
 function myFunction(total, value) {
   return total + value;
 }
-
+console.log(sum)
 //5. every() - barcha massiv qiymatlari sinovdan o 'tganligini tekshiradi. 
 
 const numbersEvery = [45, 4, 9, 16, 25];
