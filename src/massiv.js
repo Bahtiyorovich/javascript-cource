@@ -1,6 +1,6 @@
-"use strict"
+   "use strict"
 
-/* Array methods
+ /*Array methods
     array - massiv "const" kalit so'zi bilan e'lon qilinadi
 
     toString() -- massiv elementlarini satrga aylantiradi.
@@ -79,9 +79,9 @@
     splice() - massivga yangi elementlar qo'shadi, yoki olib tashlaydi
 
     // element qo'shish uchun ishlatilishi
-    const myCars = ["Gentra", "Nexia3"];
-    myCars.splice(1, 0, "Lexuc", "KIA");
-
+    const myCarsf = ["Gentra", "Nexia3"];
+    myCarsf.splice(1, 0, "Lexuc", "KIA");
+   console.log(myCarsf)
     // element olib tashlashda ishlatilishi
     const myCars = ["Gentra", "Nexia3"];
     myCars.splice(0, 1);// bunda "0 - indeks" qo'shiladigan element joyini bildiradi, "1" olib tashlanadigan element soni
@@ -94,7 +94,7 @@
 
     const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
     const citrus = fruits.slice(1);
-
+  console.log(citrus)
     Ikki massivni birlashtirish "Spred operatori"
 
     const pupils = ['ali', 'vali'];
@@ -122,8 +122,8 @@
 
 /*==================== Massivning eng ko'p ishlatiladigan metodlari ===================== */
 
-//  1. forEach() - har bir massiv elementi uchun bir marta     funktsiyani
-// (qayta qo'ng'iroq funktsiyasi) chaqiradi.
+ /*1. forEach() - har bir massiv elementi uchun bir marta     funktsiyani
+(qayta qo'ng'iroq funktsiyasi) chaqiradi.
 
 const numbers1 = [45, 4, 9, 16, 25];
 let txt = "";
@@ -132,9 +132,15 @@ numbers1.forEach((value) => {
 });
 console.log(txt);
 
-//  2.  map() - har bir massiv elementida funksiyani bajarish orqali yangi
-// massiv yaratadi.  map() - massiv elementlari uchun qiymatsiz funksiyani
-// bajarmaydi.      map() - asl qatorni o'zgartirmaydi.
+
+numbers1.forEach(item => {
+  item = item*3
+  console.log(item)
+})
+
+ /*2.  map() - har bir massiv elementida funksiyani bajarish orqali yangi
+massiv yaratadi.  map() - massiv elementlari uchun qiymatsiz funksiyani
+bajarmaydi.      map() - asl qatorni o'zgartirmaydi.
 
 const numbersMap = [45, 4, 9, 16, 25];
 const numbers2 = numbersMap.map(myFunction);
@@ -146,7 +152,7 @@ console.log(numbers2)
 
 // 3. filter() - sinovdan o 'tgan massiv elementlari bilan yangi massiv yaratadi.
 
-const numbersFilter = [45, 4, 9, 16, 25];
+const numbersFilter = [45, 4, 9, 16, 25, 36, 58, 97, 1997];
 const over18 = numbersFilter.filter(myFunction);
 
 function myFunction(value, index, array) {
@@ -154,14 +160,14 @@ function myFunction(value, index, array) {
 }
 
 console.log(over18)
-//4. reduce() - har bir massiv elementida bitta qiymat ishlab chiqarish(uni kamaytirish)uchun funksiyani ishga tushiradi.reduce() - massivda chapdan o 'ngga ishlaydi. Shuningdek qarang reduceRight().
+4. reduce() - har bir massiv elementida bitta qiymat ishlab chiqarish(uni kamaytirish)uchun funksiyani ishga tushiradi.reduce() - massivda chapdan o 'ngga ishlaydi. Shuningdek qarang reduceRight().
 
-//reduce() - asl qatorni kamaytirmaydi.const numbers = [45, 4, 9, 16, 25];
+reduce() - asl qatorni kamaytirmaydi.const numbers = [45, 4, 9, 16, 25];
 const numbersReduce = [45, 4, 9, 16, 25];
-let summa = numbersReduce.reduce(myFunction);
+let summa = numbersReduce.reduce(myFunction, 250);
 
 function myFunction(total, value, index, array) {
-  return total + value;
+  return total - value;
 }
 console.log(summa)
 //reduce() - boshlang 'ich qiymatni qabul qilishi mumkin:
@@ -175,16 +181,21 @@ function myFunction(total, value) {
 console.log(sum)
 //5. every() - barcha massiv qiymatlari sinovdan o 'tganligini tekshiradi. 
 
-const numbersEvery = [45, 4, 9, 16, 25];
+const numbersEvery = [45, 4, 9, 16 , 25];
 let allOver18 = numbersEvery.every(myFunction);
 
 function myFunction(value, index, array) {
   return value > 18;
 }
-
+console.log(allOver18)
 //6. some() - ba 'zi massiv qiymatlari sinovdan o' tganligini tekshiradi.const numbers = [45, 4, 9, 16, 25];
 const numbersSome = [45, 4, 9, 16, 25];
-let someOver18 = numbersSome.some(myFunction);
+// 
+numbersSome.forEach(item => {
+  if(item > 18){
+    console.log(item)
+  }
+})
 
 function myFunction(value, index, array) {
   return value > 18;
@@ -204,4 +215,4 @@ function myFunction(value, index, array) {
   return value > 18;
 }
 
-//find() - ES6 xususiyatidir(JavaScript 2015). * /
+//find() - ES6 xususiyatidir(JavaScript 2015). * /*/
