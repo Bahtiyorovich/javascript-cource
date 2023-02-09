@@ -10,7 +10,8 @@ function getDateInfo() {
     const month = time.getMonth();
     const year = time.getFullYear();
 
-    const timeInfo = day + ',' + (month + 1) + ',' + year
+    const timeInfo = day + ',' + (month + 1) +
+     ',' + year
     console.log(timeInfo);
 }
 
@@ -55,11 +56,38 @@ let number = 10;
 //(number < 10) ? console.log('error') : getDateInfo()
 
 
+// switch {case}
 
+let number2 = 2022;
 
+// 1:
+// if(number2 == '2023'){
+//     console.log('Sonlar teng')
+// } else {
+//     console.log('Error')
+// }
 
+// Ternary operation:
+// (number2 == '2023') ? console.log('Sonlar teng') : console.log('Error')
 
+switch(number2) {
+    case 2020:
+        console.log(`${number2} qiymati mos keldi`)
+    break;
+    case 2022: 
+        console.log(`${number2} qiymati mos keldi`)
+    break;
+    case 2021: 
+        console.log(`${number2} qiymati mos keldi`)
+    break;
+    case 2023:
+        console.log(`${number2} qiymati mos keldi`)
+    break;
+    default: console.log('Moslik topilmadi')
+}
 
+// AMALIYOT
+// Kiritilgan songa mos oy(fasllarga oid) nomi ko'rsatilsin
 
 
 
