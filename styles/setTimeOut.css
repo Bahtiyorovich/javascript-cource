@@ -7,7 +7,7 @@
     position: relative;
     width: 900px;
     height: 100px;
-    margin: 0 auto;
+    margin: 150px auto;
     background-color: rgb(117, 117, 236);
   }
   .car {
@@ -35,4 +35,25 @@
     outline: none;
     cursor: pointer;
     margin-top: 30px;
+  }
+
+  .modal {
+    margin-left: 30px;
+    margin-bottom: 0px;
+    width: 33%;
+    background:teal;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1;
+  }
+
+  .modal h4 {
+    color: #fff;
+    font-size: 16px;
+    font-family: sans-serif;
+    letter-spacing: 1.5px;
+  }
+
+  .hidden {
+    display: none;
   }
