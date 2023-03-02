@@ -3,7 +3,7 @@ const btn = document.querySelector('.btn')
     form = document.querySelector('form')
     formInput = document.querySelectorAll('input');
 
-
+let data = 
 btn.addEventListener('click', () => {
    // innerHTML yordamida element qo'shish
     // Element.innerHTML += `
@@ -21,8 +21,3 @@ btn.addEventListener('click', () => {
 
 })
 
-form.forEach(item => {
-    btn.addEventListener('submit', (e) => {
-        e.preventDefault();
-    })
-})

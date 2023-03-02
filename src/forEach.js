@@ -18,7 +18,19 @@ ismlar.forEach(item => {
 
 console.log(newIsmlar)
 
+const data = [
+    {title: 'salom'},
+    {title: 'salom'},
+    {title: 'salom'},
+    {title: 'salom'},
+    {title: 'salom'},
+    {title: 'salom'},
+]
 
+data.forEach(item => {
+    hello = item.title
+    console.log(hello)
+})
 
 
 

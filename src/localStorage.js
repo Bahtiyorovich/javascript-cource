@@ -22,8 +22,6 @@ formSubmit.addEventListener('submit', (e) => {
 
  })
 
-const UserName = JSON.parse(localStorage.getItem('user'));
-title.textContent = `${UserName.name}`
 
 
 

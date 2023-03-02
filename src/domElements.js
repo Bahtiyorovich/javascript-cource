@@ -9,17 +9,6 @@
     // querySelectorAll() -- bir nechta element uchun
 */ 
 
-const menuItems = document.querySelector('.append')
-    elementItems = document.getElementsByClassName('elements')
-    body = document.getElementByTagName(body)
 
-const data = [
-    {title: 'salom'},
-    {title: 'salom'},
-    {title: 'salom'},
-    {title: 'salom'},
-    {title: 'salom'},
-    {title: 'salom'},
-]
 
 

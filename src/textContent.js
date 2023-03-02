@@ -16,26 +16,30 @@ data.forEach(item => {
     `
 })
 
+data.forEach(item => {
+    text.textContent += ` ${item.name} salom`
+})
 
 // getAttribute(), setAttribute() -- html atributlarini o'zgartirish
+const container = document.querySelector('.set-get')
 
-text.innerHTML = `
+container.innerHTML = `
         <a href="">w3Schools</a>
 `
-const link = document.querySelector('.title a')
+const link = document.querySelector('.set-get a')
 
 // getAttribute - malumot olish:
 console.log(link.getAttribute('href'))
 
 // setAttribute() - ma'lumotni o'zgartirish:
 link.setAttribute('href', 'https://www.w3schools.com')
-text.setAttribute('class', 'text-content')
+container.setAttribute('class', 'text-content')
 
-console.log(text.getAttribute('class'))
+console.log(container.getAttribute('class'))
 console.log(link.getAttribute('href'))
 
 
-
+link.setAttribute('style', 'color: red')
 
 
 
